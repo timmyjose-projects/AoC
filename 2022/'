@@ -1,0 +1,28 @@
+use std::collections::HashSet;
+use std::io;
+
+fn get_input() -> String {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    input.trim().to_owned()
+}
+
+fn main() {
+    let input = get_input();
+    let mut cs = HashSet::new();
+    let mut start = 0;
+    let mut pos = 0;
+
+    while start < input.len() {
+        cs.insert(input.chars().nth(start).unwrap());
+
+        if cs.len() == 4 {
+            println!("{cs:?}");
+            pos = start;
+            break;
+        }
+        start += 1;
+    }
+
+    println!("{pos}");
+}
